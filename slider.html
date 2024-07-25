@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Next-previous Img</title>
+
+    <style>
+        .img-container {
+            margin: 20px auto;
+            width: 40%;
+        }
+
+        .img-container img {
+            width: 800px;
+            ;
+            height: 500px;
+        }
+
+        .flex-image {
+            cursor: pointer;
+            width: 100%;
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .flex-image i{
+            font-size: 40px;
+            padding: 0 20px;
+            opacity: 70%;
+            transition: .3s all ease;
+        }
+        .flex-image i:hover{
+            opacity: 100%;
+        }
+        .flex-image .img {
+            border-radius: 20px;
+            opacity: 70%;
+            width: 200px;
+            height: 150px;
+            transition: .2s ease;
+
+        }
+
+        .flex-image .img:hover {
+            opacity: 100%;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <h1 style="text-align: center; ">Slider</h1>
+    <div class="img-container">
+        <img src="https://www.carandbike.com/_next/image?url=https%3A%2F%2Fc.ndtvimg.com%2F2022-01%2F0d2m0qkg_car_625x300_12_January_22.jpg&w=3840&q=75"
+            alt="" class="imageTag">
+        <div class="flex-image">
+            <i onclick="previous()" class="fa-solid fa-backward"></i>
+            <img src="https://www.carandbike.com/_next/image?url=https%3A%2F%2Fc.ndtvimg.com%2F2022-01%2F0d2m0qkg_car_625x300_12_January_22.jpg&w=3840&q=75"
+                class="img" onclick="setImg(this)" alt="">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1dzAY9vxSYgd7Zz6Aji9j2-LaG3-BF5iw5w&s"
+                class="img" onclick="setImg(this)" alt="">
+            <img src="https://img.freepik.com/free-photo/luxurious-car-parked-highway-with-illuminated-headlight-sunset_181624-60607.jpg"
+                class="img" onclick="setImg(this)" alt="">
+            <img src="https://hips.hearstapps.com/hmg-prod/images/dw-burnett-pcoty22-8260-1671143390.jpg"
+                onclick="setImg(this)" class="img" alt="">
+            <i onclick="next()" class="fa-solid fa-forward"></i>
+        </div>
+    </div>
+
+    <script>
+        let images = [
+            'https://www.carandbike.com/_next/image?url=https%3A%2F%2Fc.ndtvimg.com%2F2022-01%2F0d2m0qkg_car_625x300_12_January_22.jpg&w=3840&q=75',
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1dzAY9vxSYgd7Zz6Aji9j2-LaG3-BF5iw5w&s',
+            'https://img.freepik.com/free-photo/luxurious-car-parked-highway-with-illuminated-headlight-sunset_181624-60607.jpg',
+            'https://hips.hearstapps.com/hmg-prod/images/dw-burnett-pcoty22-8260-1671143390.jpg',
+        ];
+        let MainImg = document.querySelector('.imageTag');
+        let i = 0;
+        function setImg(data) {
+            MainImg.src = data.src;
+        }
+
+        function next() {
+            if (i >= images.length - 1) {
+                return false;
+            }
+            i++;
+            MainImg.setAttribute('src', images[i]);
+        }
+        function previous() {
+            if (i <= 0) {
+                return false;
+            }
+            i--;
+            MainImg.setAttribute('src', images[i]);
+        }
+
+    </script>
+
+</body>
+
+</html>
